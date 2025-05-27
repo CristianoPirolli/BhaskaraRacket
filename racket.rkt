@@ -144,7 +144,7 @@
               (salvar-no-banco a b c delta sql-null sql-null vx vy)
               (salvar-em-arquivo a b c delta sql-null sql-null vx vy)
               (exibir-resultado
-               (format "Delta = ~a\n Não existem raízes reais.\n📍 Vértice: (~a, ~a)"
+               (format "Delta = ~a\n Não existem raízes reais.\n Vértice: (~a, ~a)"
                        delta vx vy)))
             (let* ([raiz (sqrt delta)]
                    [x1 (/ (+ (- b) raiz) (* 2 a))]
