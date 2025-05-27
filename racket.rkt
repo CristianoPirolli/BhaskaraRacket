@@ -24,18 +24,18 @@
       (new vertical-panel% [parent painel-horizontal]))
     (define img (make-object bitmap% "bhaskara.jpg" 'jpeg))
     (define img-width (send img get-width))
-(define img-height (send img get-height))
+    (define img-height (send img get-height))
 
-(new canvas%
-  [parent painel-imagem]
-  [min-width img-width]
-  [min-height img-height]
-  [stretchable-width #f]
-  [stretchable-height #f]
-  [paint-callback
-   (lambda (canvas dc)
-     (send dc clear)
-     (send dc draw-bitmap img 0 0))])
+    (new canvas%
+         [parent painel-imagem]
+         [min-width img-width]
+         [min-height img-height]
+         [stretchable-width #f]
+         [stretchable-height #f]
+         [paint-callback
+          (lambda (canvas dc)
+            (send dc clear)
+            (send dc draw-bitmap img 0 0))])
 
 
 
@@ -79,12 +79,12 @@
               (processar-valores))]))
 
     (define botao-limpar
-        (new button%
-       [parent painel-principal]
-       [label "Limpar"]
-       [callback
-        (lambda (_btn _evt)
-          (limpar-campos))]))
+      (new button%
+           [parent painel-principal]
+           [label "Limpar"]
+           [callback
+            (lambda (_btn _evt)
+              (limpar-campos))]))
 
 
     (define (processar-valores)
@@ -107,16 +107,16 @@
       (send resultado-editor insert texto))
 
     (define (limpar-campos)
-        (send campo-a set-value "")
-        (send campo-b set-value "")
-        (send campo-c set-value "")
-        (send resultado-editor erase))
+      (send campo-a set-value "")
+      (send campo-b set-value "")
+      (send campo-c set-value "")
+      (send resultado-editor erase))
 
 
     (define (salvar-no-banco a b c delta x1 x2 vx vy)
       (query-exec db
                   "INSERT INTO bhaskara (valorA, valorB, valorC, delta, x1, x2, verticeX, verticeY)
-                   VALUES (?, ?, ?, ?, ?, ?, ?, ?);"
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?);"
                   a b c delta x1 x2 vx vy))
 
     (define (salvar-em-arquivo a b c delta x1 x2 vx vy)
@@ -154,7 +154,7 @@
               (exibir-resultado
                (format "Delta = ~a\n Raiz x1 = ~a\n Raiz x2 = ~a\n Vértice: (~a, ~a)"
                        delta x1 x2 vx vy)))))))
-)
+  )
 
 (define minha-janela (new equacao-frame%))
 (send minha-janela show #t)
